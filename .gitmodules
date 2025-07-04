@@ -1,0 +1,3 @@
+[submodule "LuaCATS/pandoc-types"]
+	path = LuaCATS/pandoc-types
+	url = https://github.com/rnwst/pandoc-lua-types
