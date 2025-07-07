@@ -4,24 +4,9 @@ local lua_elements = false
 ---@type table  Lua environment for to be executed Lua code elements from the document
 local env = {}
 
--- We need to populate this environment with the globals provided by pandoc.
-for global in
-   pandoc
-      .List({
-         'FORMAT',
-         'PANDOC_READER_OPTIONS',
-         'PANDOC_WRITER_OPTIONS',
-         'PANDOC_VERSION',
-         'PANDOC_API_VERSION',
-         'PANDOC_SCRIPT_FILE',
-         'PANDOC_STATE',
-         'pandoc',
-         'lpeg',
-         're',
-      })
-      :iter()
-do
-   env[global] = _G[global]
+-- We need to populate this environment with all the necessary globals.
+for key, val in pairs(_G) do
+   env[key] = val
 end
 
 ---@type string
